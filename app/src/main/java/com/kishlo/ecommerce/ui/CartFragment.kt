@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.kishlo.ecommerce.R
+import com.kishlo.ecommerce.abstraction.Initialisation
 import com.kishlo.ecommerce.databinding.FragmentCartBinding
+import com.kishlo.ecommerce.setTitle
 
-class CartFragment : Fragment() {
+class CartFragment : Fragment(), Initialisation {
 
     private lateinit var fragmentCartBinding: FragmentCartBinding
 
@@ -18,5 +21,9 @@ class CartFragment : Fragment() {
     ): View {
         fragmentCartBinding = FragmentCartBinding.inflate(inflater)
         return fragmentCartBinding.root
+    }
+
+    override fun init() {
+        setTitle(R.string.title_cart)
     }
 }
