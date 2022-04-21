@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment
 import com.kishlo.ecommerce.R
 import com.kishlo.ecommerce.abstraction.Initialisation
 import com.kishlo.ecommerce.databinding.FragmentCartBinding
-import com.kishlo.ecommerce.setTitle
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CartFragment : Fragment(), Initialisation {
 
     private lateinit var fragmentCartBinding: FragmentCartBinding
