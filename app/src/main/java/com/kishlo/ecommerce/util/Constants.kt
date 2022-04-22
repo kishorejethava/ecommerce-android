@@ -6,4 +6,5 @@ package com.kishlo.ecommerce.util
 object Constants {
 
     const val BASE_URL = "https://my-json-server.typicode.com/"
+    const val DATABASE_NAME = "ecommerce-db"
 }

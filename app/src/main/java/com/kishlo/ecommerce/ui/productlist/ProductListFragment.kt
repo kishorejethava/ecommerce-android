@@ -1,4 +1,4 @@
-package com.kishlo.ecommerce.ui
+package com.kishlo.ecommerce.ui.productlist
 
 import android.os.Bundle
 import android.view.*
@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.kishlo.ecommerce.R
 import com.kishlo.ecommerce.abstraction.Initialisation
 import com.kishlo.ecommerce.databinding.FragmentProductListBinding
+import com.kishlo.ecommerce.ui.setTitle
 import com.kishlo.ecommerce.util.EqualSpacingItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,13 +38,16 @@ class ProductListFragment : Fragment(), Initialisation {
         fragmentProductListBinding.rvProductList.addItemDecoration(
             EqualSpacingItemDecoration(10, 10, 10, 10)
         )
+        val adapter = ProductListAdapter()
         viewModel.liveDataProductList.observe(viewLifecycleOwner) { response ->
             response?.let {
-                fragmentProductListBinding.rvProductList.adapter =
-                    ProductListAdapter(it.products)
+                adapter.productList = it.products
+                fragmentProductListBinding.rvProductList.adapter = adapter
             }
         }
-
+        adapter.liveDataAddCartClick.observe(viewLifecycleOwner) {
+            viewModel.insert(it)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

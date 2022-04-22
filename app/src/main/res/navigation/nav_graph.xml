@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/productListFragment"
-        android:name="com.kishlo.ecommerce.ui.ProductListFragment"
+        android:name="com.kishlo.ecommerce.ui.productlist.ProductListFragment"
         android:label="ProductListFragment"
         tools:layout="@layout/fragment_product_list">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.kishlo.ecommerce.ui.CartFragment"
+        android:name="com.kishlo.ecommerce.ui.cart.CartFragment"
         android:label="CartFragment"
         tools:layout="@layout/fragment_cart"/>
 </navigation>
