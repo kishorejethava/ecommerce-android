@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.kishlo.ecommerce.R
 import com.kishlo.ecommerce.abstraction.Initialisation
 import com.kishlo.ecommerce.databinding.FragmentCartBinding
@@ -24,6 +25,7 @@ class CartFragment : Fragment(), Initialisation {
         savedInstanceState: Bundle?
     ): View {
         fragmentCartBinding = FragmentCartBinding.inflate(inflater)
+        fragmentCartBinding.viewModel = viewModel
         return fragmentCartBinding.root
     }
 
@@ -41,6 +43,11 @@ class CartFragment : Fragment(), Initialisation {
             response?.let {
                 adapter.setData(it)
             }
+        }
+        viewModel.liveDataCheckoutClick.observe(viewLifecycleOwner) {
+            val action =
+                CartFragmentDirections.actionCartFragmentToCheckoutFragment()
+            findNavController().navigate(action)
         }
     }
 }

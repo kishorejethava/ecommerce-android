@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.kishlo.ecommerce.ui.checkout.CheckoutViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/your_order_has_been_placed"
+            app:layout_constraintBottom_toTopOf="@+id/tv_congratulations"
+            android:src="@drawable/ic_done" />
+
+        <TextView
+            android:id="@+id/tv_congratulations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginTop="18dp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/iv_done"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintBottom_toTopOf="@+id/tv_order_placed"
+            android:text="@string/congratulations" />
+
+        <TextView
+            android:id="@+id/tv_order_placed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tv_congratulations"
+            android:text="@string/your_order_has_been_placed"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintBottom_toTopOf="@+id/btnCheckout" />
+
+        <Button
+            android:id="@+id/btnCheckout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/continue_shopping"
+            android:padding="16dp"
+            app:cornerRadius="24dp"
+            android:onClick="@{() -> viewModel.onContinueShopping()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="8dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
